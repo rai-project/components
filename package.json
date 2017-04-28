@@ -45,11 +45,13 @@
     "eslint-plugin-prettier": "^2.0.1",
     "eslint-plugin-react": "6.4.1",
     "file-loader": "^0.11.1",
+    "flow-bin": "^0.45.0",
     "husky": "^0.13.3",
     "img-loader": "^2.0.0",
     "jest": "^19.0.2",
     "lint-staged": "^3.4.1",
     "node-sass": "^4.5.2",
+    "now": "^4.11.2",
     "prettier": "^1.2.2",
     "react-scripts": "0.9.5",
     "sass-loader": "^6.0.3",
@@ -63,7 +65,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "flow": "flow"
   },
   "lint-staged": {
     "*.js": [
