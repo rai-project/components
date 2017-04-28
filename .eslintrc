@@ -9,6 +9,7 @@ parserOptions:
 
 plugins:
   - react
+  - prettier
 
 env:
   browser: true
@@ -86,3 +87,5 @@ rules:
   react/self-closing-comp: 1
   react/sort-comp: 1
   react/jsx-wrap-multilines: 1
+
+  prettier/prettier: ["error", {"trailingComma": "es5", "singleQuote": true}]
