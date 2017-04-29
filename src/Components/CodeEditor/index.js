@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import "!style!css!codemirror/lib/codemirror.css";
 // eslint-disable-next-line import/no-webpack-loader-syntax
-import "!style!css!./codemirror.css";
+import "!style!css!./theme.css";
 
 import React from "react";
 import PropTypes from "prop-types";
@@ -13,6 +13,8 @@ import "./styles.css";
 import "codemirror/mode/clike/clike.js";
 import "codemirror/mode/dockerfile/dockerfile.js";
 
+import "./mode/cuda";
+
 class CodeEditor extends React.Component {
   constructor(props) {
     super(props);
@@ -20,7 +22,7 @@ class CodeEditor extends React.Component {
   componentDidMount() {
     this.codemirror = CodeMirror(this.codeElement, {
       value: this.props.content || "",
-      mode: "dockerfile",
+      mode: "text/x-cuda-src",
       autofocus: true,
       theme: "rai",
       matchTags: {
