@@ -1,13 +1,20 @@
+// eslint-disable-next-line import/no-webpack-loader-syntax
+import "!style!css!xterm/dist/xterm.css";
+
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Xterm from "xterm";
 
-import "!style!css!../../../node_modules/xterm/dist/xterm.css";
 import "./styles.css";
 
 class XTerm extends Component {
   constructor(props) {
     super(props);
+    this.onFocus = this.focusChanged.bind(this, true);
+    this.onBlur = this.focusChanged.bind(this, false);
+    this.focusChanged = this.focusChanged.bind(this);
+    this.onInput = this.onInput.bind(this);
+    this.onKey = this.onKey.bind(this);
     this.state = {
       isFocused: false
     };
@@ -15,11 +22,10 @@ class XTerm extends Component {
   componentDidMount() {
     const term = new Xterm();
     term.open(this.xtermElement);
-    term.on("focus", this.focusChanged.bind(this, true));
-    term.on("blur", this.focusChanged.bind(this, false));
-    if (this.props.onInput) {
-      term.on("data", this.onInput.bind(this));
-    }
+    term.on("focus", this.onFocus);
+    term.on("blur", this.onBlur);
+    term.on("data", this.onInput);
+    this.onInput("key", this.onKey);
     if (this.props.value) {
       term.writeln(this.props.value);
     }
@@ -75,12 +81,21 @@ class XTerm extends Component {
     this.resize(geometry.cols, geometry.rows);
   }
   resize(cols, rows) {
+    if (!this.xterm) {
+      return;
+    }
     this.xterm.resize(cols, rows);
   }
   write(data) {
+    if (!this.xterm) {
+      return;
+    }
     this.xterm.write(data);
   }
   writeln(data) {
+    if (!this.xterm) {
+      return;
+    }
     this.xterm.writeln(data);
   }
   focusChanged(focused) {
@@ -89,8 +104,34 @@ class XTerm extends Component {
     });
     this.props.onFocusChange && this.props.onFocusChange(focused);
   }
+  onKey(key, ev) {
+    if (this.props.onKey) {
+      return this.props.onKey(key, ev);
+    }
+
+    console.log([key, ev]);
+
+    const isPrintable =
+      !ev.altKey && !ev.altGraphKey && !ev.ctrlKey && !ev.metaKey;
+    if (ev.keyCode == 13) {
+      this.prompt();
+    } else if (ev.keyCode == 8) {
+      // Do not delete the prompt
+      if (term.x > 2) {
+        term.write("\b \b");
+      }
+    } else if (isPrintable) {
+      this.term.write(key);
+    }
+  }
+  prompt() {
+    this.write("\r\n" + this.props.prompt);
+  }
   onInput(data) {
-    this.props.onInput && this.props.onInput(data);
+    if (this.props.onInput) {
+      return this.props.onInput(data);
+    }
+    this.write(data);
   }
   setCursorBlink(blink) {
     if (this.xterm && this.xterm.cursorBlink !== blink) {
@@ -118,6 +159,7 @@ XTerm.propTypes = {
   prompt: PropTypes.string,
   onFocusChange: PropTypes.func,
   onInput: PropTypes.func,
+  onKey: PropTypes.func,
   value: PropTypes.string
 };
 
