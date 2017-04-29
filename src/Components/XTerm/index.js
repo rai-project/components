@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Xterm from "xterm";
 
+import "!style!css!../../../node_modules/xterm/dist/xterm.css";
 import "./styles.css";
 
 class XTerm extends Component {
@@ -13,15 +14,14 @@ class XTerm extends Component {
   }
   componentDidMount() {
     const term = new Xterm();
-    term.open(terminalContainer);
-    term.open(this.refs.container);
+    term.open(this.xtermElement);
     term.on("focus", this.focusChanged.bind(this, true));
     term.on("blur", this.focusChanged.bind(this, false));
     if (this.props.onInput) {
-      term.on("data", this.onInput);
+      term.on("data", this.onInput.bind(this));
     }
     if (this.props.value) {
-      term.write(this.props.value);
+      term.writeln(this.props.value);
     }
     this.xterm = term;
   }
