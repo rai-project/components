@@ -27,10 +27,12 @@
     "rodal": "^1.5.0",
     "semantic-ui-css": "^2.2.10",
     "semantic-ui-react": "^0.68.2",
+    "socket.io": "^1.7.3",
     "store2": "^2.5.1",
     "theaterjs": "^3.1.0",
     "uppy": "^0.15.1",
-    "whatwg-fetch": "^2.0.3"
+    "whatwg-fetch": "^2.0.3",
+    "xterm": "^2.5.0"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.21.0",
@@ -41,7 +43,7 @@
     "eslint-config-react-app": "0.3.0",
     "eslint-plugin-flowtype": "2.21.0",
     "eslint-plugin-import": "2.0.1",
-    "eslint-plugin-jsx-a11y": "2.2.3",
+    "eslint-plugin-jsx-a11y": "4.0.0",
     "eslint-plugin-prettier": "^2.0.1",
     "eslint-plugin-react": "6.4.1",
     "file-loader": "^0.11.1",
@@ -73,5 +75,8 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   }
 }
