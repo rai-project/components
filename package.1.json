@@ -69,7 +69,8 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "precommit": "lint-staged",
-    "flow": "flow"
+    "flow": "flow",
+    "format": "prettier --single-quote --trailing-comma=es5 --print-width=100 --write 'src/**/*.js'"
   },
   "lint-staged": {
     "*.js": [
