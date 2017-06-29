@@ -5,7 +5,6 @@ import "!style!css!./theme.css";
 
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
 import CodeMirror from "codemirror";
 
 import "./styles.css";
@@ -20,6 +19,7 @@ class CodeEditor extends React.Component {
     super(props);
   }
   componentDidMount() {
+    // eslint-disable-next-line new-cap
     this.codemirror = CodeMirror(this.codeElement, {
       value: this.props.content || "",
       mode: "text/x-cuda-src",
@@ -45,7 +45,6 @@ class CodeEditor extends React.Component {
     //   this.codemirror.on('cursorActivity', this.onCursorChange)
   }
   render() {
-    const onButtonClick = this.onButtonClick;
     return (
       <div className="wrapper">
         <div
@@ -53,9 +52,7 @@ class CodeEditor extends React.Component {
             this.codeElement = node;
           }}
           className="editor"
-        />
-
-        {" "}
+        />{" "}
       </div>
     );
   }

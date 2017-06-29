@@ -43,37 +43,37 @@ class XTerm extends Component {
   proposeGeometry() {
     const parentElementStyle = window.getComputedStyle(
       this.element.parentElement
-    ),
-      parentElementHeight = parseInt(
-        parentElementStyle.getPropertyValue("height")
-      ),
-      parentElementWidth = parseInt(
-        parentElementStyle.getPropertyValue("width")
-      ),
-      elementStyle = window.getComputedStyle(this.element),
-      elementPaddingVer =
-        parseInt(elementStyle.getPropertyValue("padding-top")) +
-        parseInt(elementStyle.getPropertyValue("padding-bottom")),
-      elementPaddingHor =
-        parseInt(elementStyle.getPropertyValue("padding-right")) +
-        parseInt(elementStyle.getPropertyValue("padding-left")),
-      availableHeight = parentElementHeight - elementPaddingVer,
-      availableWidth = parentElementWidth - elementPaddingHor,
-      subjectRow = this.rowContainer.firstElementChild,
-      contentBuffer = subjectRow.innerHTML;
-    let characterHeight, rows, characterWidth, cols, geometry;
+    );
+    const parentElementHeight = parseInt(
+      parentElementStyle.getPropertyValue("height")
+    );
+    const parentElementWidth = parseInt(
+      parentElementStyle.getPropertyValue("width")
+    );
+    const elementStyle = window.getComputedStyle(this.element);
+    const elementPaddingVer =
+      parseInt(elementStyle.getPropertyValue("padding-top")) +
+      parseInt(elementStyle.getPropertyValue("padding-bottom"));
+    const elementPaddingHor =
+      parseInt(elementStyle.getPropertyValue("padding-right")) +
+      parseInt(elementStyle.getPropertyValue("padding-left"));
+    const availableHeight = parentElementHeight - elementPaddingVer;
+    const availableWidth = parentElementWidth - elementPaddingHor;
+    const subjectRow = this.rowContainer.firstElementChild;
+    const contentBuffer = subjectRow.innerHTML;
 
     subjectRow.style.display = "inline";
     subjectRow.innerHTML = "W"; // Common character for measuring width, although on monospace
-    characterWidth = subjectRow.getBoundingClientRect().width;
     subjectRow.style.display = ""; // Revert style before calculating height, since they differ.
-    characterHeight = parseInt(subjectRow.offsetHeight);
     subjectRow.innerHTML = contentBuffer;
 
-    rows = parseInt(availableHeight / characterHeight);
-    cols = parseInt(availableWidth / characterWidth) - 1;
+    const characterWidth = subjectRow.getBoundingClientRect().width;
+    const characterHeight = parseInt(subjectRow.offsetHeight);
 
-    geometry = { cols: cols, rows: rows };
+    const rows = parseInt(availableHeight / characterHeight);
+    const cols = parseInt(availableWidth / characterWidth) - 1;
+
+    const geometry = { cols: cols, rows: rows };
     return geometry;
   }
   fit() {
@@ -148,8 +148,7 @@ class XTerm extends Component {
             this.xtermElement = node;
           }}
           className={xtermClassName}
-        />
-        {" "}
+        />{" "}
       </div>
     );
   }

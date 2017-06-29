@@ -1,5 +1,5 @@
 import React from "react";
-import { storiesOf, action, linkTo } from "@kadira/storybook";
+import { storiesOf } from "@storybook/react";
 import CodeEditor from "../Components/CodeEditor";
 
 import vectorAddCode from "!!raw!./_fixtures/vectoradd.cu";

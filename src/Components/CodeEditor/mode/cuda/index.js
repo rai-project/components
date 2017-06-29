@@ -1,3 +1,4 @@
+/* eslint-disable  */
 import CodeMirror from "codemirror";
 import _ from "lodash";
 
@@ -261,13 +262,13 @@ const extra_types = [
   ...wg_api_calls
 ];
 
-var baseMode = CodeMirror.mimeModes["text/x-c++src"];
-var keywords = _.fromPairs(
+let baseMode = CodeMirror.mimeModes["text/x-c++src"];
+let keywords = _.fromPairs(
   _.map(_.concat(_.keys(baseMode.keywords), extra_keywords), function(elem) {
     return [elem, true];
   })
 );
-var types = _.fromPairs(
+let types = _.fromPairs(
   _.map(_.concat(_.keys(baseMode.types), extra_types), function(elem) {
     return [elem, true];
   })
