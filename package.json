@@ -101,12 +101,20 @@
     "flow": "flow"
   },
   "lint-staged": {
-    "*.js": [
-      "prettier --write",
+    "src/**/*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --parser flow --write",
+      "git add"
+    ],
+    "src/**/*.css": [
+      "stylefmt",
+      "stylelint scss",
+      "git add"
+    ],
+    "src/**/*.scss": [
+      "stylefmt",
+      "stylelint --syntax scss",
       "git add"
     ]
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   }
 }
