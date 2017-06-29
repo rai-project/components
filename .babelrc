@@ -1,6 +1,7 @@
 {
   "presets": [
-    "react-app"
+    "react-app",
+    "flow"
   ],
   "plugins": [
     "add-module-exports",

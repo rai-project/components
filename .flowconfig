@@ -11,9 +11,11 @@
 <PROJECT_ROOT>/src/.*
 
 [libs]
+flow-typed
 
 [options]
 
+module.system.node.resolve_dirname=src
 suppress_comment=\\(.\\|\n\\)*\\#FlowExpectError
 suppress_comment=\\(.\\|\n\\)*\\#FlowIgnoreAsset
 

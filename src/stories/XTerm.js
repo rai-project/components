@@ -1,6 +1,6 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import XTerm from "../Components/XTerm";
+import XTerm from "components/XTerm";
 
 storiesOf("XTerm", module)
   .add("default", () => <XTerm value={"Hello world"} />)

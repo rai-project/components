@@ -1,7 +1,7 @@
 {
-  "name": "react-components",
-  "version": "^0.1.0",
-  "private": true,
+  "name": "@rai/react-components",
+  "version": "0.1.0",
+  "private": false,
   "dependencies": {
     "@cerebral/firebase": "^0.0.0-beta.3",
     "@cerebral/forms": "^0.0.0-beta.3",
@@ -93,10 +93,6 @@
     "case-sensitive-paths-webpack-plugin": "^2.1.1",
     "concurrently": "^3.5.0",
     "css-loader": "^0.28.4",
-    "style-loader": "^0.18.2",
-    "postcss-flexbugs-fixes": "^3.0.0",
-    "postcss-loader": "^2.0.6",
-    "url-loader": "^0.5.9",
     "cssnano": "^3.10.0",
     "detect-port": "^1.2.1",
     "eslint": "^4.1.1",
@@ -126,6 +122,8 @@
     "lint-staged": "^4.0.0",
     "node-sass-chokidar": "^0.0.3",
     "npm-run-all": "^4.0.2",
+    "postcss-flexbugs-fixes": "^3.0.0",
+    "postcss-loader": "^2.0.6",
     "prettier": "^1.5.2",
     "raw-loader": "^0.5.1",
     "rimraf": "^2.6.1",
@@ -141,7 +139,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "lib": "babel src/node_modules --out-dir lib --copy-files",
+    "lib": "BABEL_ENV=production babel src/node_modules --out-dir lib --copy-files",
     "test": "node scripts/test.js --env=jsdom",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
@@ -153,6 +151,7 @@
     "flow coverage": "flow coverage",
     "analyze": "source-map-explorer build/static/js/main.*"
   },
+  "verbose": true,
   "lint-staged": {
     "src/**/*.{js,jsx}": [
       "eslint --fix",
