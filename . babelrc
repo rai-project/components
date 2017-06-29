@@ -1,0 +1,11 @@
+{
+  "presets": [
+    "react-app"
+  ],
+  "plugins": [
+    "add-module-exports",
+    "transform-regenerator",
+    "dynamic-import-webpack",
+    "syntax-dynamic-import"
+  ]
+}
