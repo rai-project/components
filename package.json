@@ -1,6 +1,6 @@
 {
   "name": "@rai/react-components",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "main": "lib/index.js",
   "dependencies": {
@@ -150,6 +150,7 @@
     "flow stop": "flow stop",
     "flow status": "flow status",
     "flow coverage": "flow coverage",
+    "publish": "npm publish --access=public",
     "analyze": "source-map-explorer build/static/js/main.*"
   },
   "verbose": true,
