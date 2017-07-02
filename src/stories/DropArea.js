@@ -1,7 +1,10 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import DropArea from "components/DropArea";
+import { Page } from "hedron";
 
 storiesOf("DropArea", module).add("default", () =>
-  <DropArea onChange={console.log} />
+  <Page>
+    <DropArea onChange={console.log} />
+  </Page>
 );

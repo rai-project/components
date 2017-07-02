@@ -4,3 +4,4 @@ import "./CodeEditor";
 import "./XTerm";
 import "./UploadArea";
 import "./DropArea";
+import "./FileBrowser";
