@@ -27,3 +27,5 @@ build/
 /.gitignore
 /.travis.yml
 /jest.config.json
+
+.env.*.local

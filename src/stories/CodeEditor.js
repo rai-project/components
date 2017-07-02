@@ -6,21 +6,21 @@ import yeast from "yeast";
 import vectorAddCode from "!raw-loader!./_fixtures/vectoradd.cu";
 
 storiesOf("CodeEditor", module)
-  .add("default", () =>
+  .addWithJSX("default", () =>
     <CodeEditor
       files={{
         code: { content: "Hello", createdOn: new Date(), uuid: yeast() }
       }}
     />
   )
-  .add("cuda", () =>
+  .addWithJSX("cuda", () =>
     <CodeEditor
       files={{
         code: { content: vectorAddCode, createdOn: new Date(), uuid: yeast() }
       }}
     />
   )
-  .add("cuda-with-menu", () =>
+  .addWithJSX("cuda-with-menu", () =>
     <CodeEditor
       withMenuBar
       files={{
@@ -29,7 +29,7 @@ storiesOf("CodeEditor", module)
       onSaveIconClick={(_, v) => console.log(v)}
     />
   )
-  .add("multifile", () =>
+  .addWithJSX("multifile", () =>
     <CodeEditor
       withMenuBar
       currentFile={"file1"}
@@ -40,7 +40,7 @@ storiesOf("CodeEditor", module)
       onSaveIconClick={(_, v) => console.log(v)}
     />
   )
-  .add("multifile-nobar", () =>
+  .addWithJSX("multifile-nobar", () =>
     <CodeEditor
       currentFile={"file1"}
       files={{

@@ -3,8 +3,8 @@ import { storiesOf } from "@storybook/react";
 import XTerm from "components/XTerm";
 
 storiesOf("XTerm", module)
-  .add("default", () => <XTerm value={"Hello world"} />)
-  .add("withConsoleLogger", () =>
+  .addWithJSX("default", () => <XTerm value={"Hello world"} />)
+  .addWithJSX("withConsoleLogger", () =>
     <XTerm
       value={""}
       onFocusChange={c => console.log(["on focus change", c])}
